@@ -229,6 +229,10 @@ var reactGA = {
       if (typeof ga === 'function') {
         ga('require', 'ecommerce');
       }
+
+      if (_debug) {
+        log('called ga(\'require\', \'ecommerce\');');
+      }
     },
     /**
      * execute:
@@ -248,8 +252,16 @@ var reactGA = {
           payload = payload || null;
           if (payload) {
             ga(command, payload);
+            if (_debug) {
+              log('called ga(\'' + command + '\');');
+              log('with payload: ' + JSON.stringify(payload));
+            }
           } else {
             ga(command);
+            if (_debug) {
+              log('called ga(\'' + command + '\');');
+            }
+
           }
         }
       }
