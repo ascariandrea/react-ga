@@ -78,7 +78,8 @@ function format(s) {
 }
 
 var reactGA = {
-  initialize: function(gaTrackingID, options) {
+  initialize: function(gaTrackingID, options, gaOptions) {
+    gaOptions = gaOptions || 'auto';
     if (!gaTrackingID) {
       warn('gaTrackingID is required in initialize()');
       return;
@@ -106,7 +107,7 @@ var reactGA = {
        '//www.google-analytics.com/analytics.js', 'ga');
     /* jshint ignore:end */
 
-    ga('create', gaTrackingID, 'auto');
+    ga('create', gaTrackingID, gaOptions);
   },
 
   /**
